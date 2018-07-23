@@ -1,0 +1,7 @@
+<launch>
+  <rosparam file="$(find mra7a_gazebo)/config/mra7a_gazebo_trajectory_controller.yaml"  command="load"/>
+
+  <node name="mra7a_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/mra7a" args="arm_trajectory_controller gripper_trajectory_controller"/>
+
+</launch>

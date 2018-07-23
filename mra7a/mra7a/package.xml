@@ -1,0 +1,23 @@
+<package>
+  <name>mra7a</name>
+  <version>1.0.0</version>
+  <description>Aubo's mra(module robot arm) 7 Dof</description>
+
+  <maintainer email="lmn.cnu.g@gmail.com">lmn</maintainer>
+
+  <license>BSD</license>
+
+  <author>lmn</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+
+  <run_depend>mra7a_description</run_depend>
+  <run_depend>mra7a_gazebo</run_depend>
+  <run_depend>mra7a_moveit_config</run_depend>
+
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

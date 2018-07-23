@@ -1,0 +1,26 @@
+<package>
+  <name>mra_ros_control</name>
+  <version>1.0.0</version>
+  <description>This stack is used to control real aubo's MRA(module robot amr) by ros control.</description>
+
+  <maintainer email="mengnanli@aliyun.com">lmn</maintainer>
+
+  <license>BSD</license>
+
+  <author>lmn</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>mra_basic</run_depend>
+  <run_depend>mra_core_msgs</run_depend>
+  <run_depend>mra_joint_state_publisher</run_depend>
+  <run_depend>mra_joint_state_publisher_control</run_depend>
+  <run_depend>ros_control</run_depend>
+  <run_depend>ros_controllers</run_depend>
+
+
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

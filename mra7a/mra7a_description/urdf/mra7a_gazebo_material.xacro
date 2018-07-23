@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:macro name="mra7a_gazebo_material" params="prefix">
+
+<gazebo reference="base_link">
+<visual name="gazeboo_color_base_link">
+<material>
+<script>
+ <uri>file://media/materials/scripts/gazebo.material</uri>
+ <name>Gazebo/FlatBlack</name>
+</script>
+</material>
+</visual>
+</gazebo>
+
+<gazebo reference="Link1">
+<visual name="gazebo_color_Link1">
+<material>
+<script>
+<uri>file://media/materials/scripts/gazebo.material</uri>
+<name>Gazebo/Orange</name>
+</script>
+</material>
+</visual>
+</gazebo>
+
+<gazebo reference="Link2">
+<visual name="gazebo_color_Link2">
+<material>
+<script>
+<uri>file://media/materials/scripts/gazebo.material</uri>
+<name>Gazebo/Orange</name>
+</script>
+</material>
+</visual>
+</gazebo>
+
+<gazebo reference="Link3">
+<visual name="gazebo_color_Link3">
+<material>
+<script>
+<uri>file://media/materials/scripts/gazebo.material</uri>
+<name>Gazebo/Orange</name>
+</script>
+</material>
+</visual>
+</gazebo>
+<gazebo reference="Link4">
+<visual name="gazebo_color_Link4">
+<material>
+<script>
+<uri>file://media/materials/scripts/gazebo.material</uri>
+<name>Gazebo/Orange</name>
+</script>
+</material>
+</visual>
+</gazebo>
+<gazebo reference="Link5">
+<visual name="gazebo_color_Link5">
+<material>
+<script>
+<uri>file://media/materials/scripts/gazebo.material</uri>
+<name>Gazebo/Orange</name>
+</script>
+</material>
+</visual>
+</gazebo>
+<gazebo reference="Link6">
+<visual name="gazebo_color_Link6">
+<material>
+<script>
+<uri>file://media/materials/scripts/gazebo.material</uri>
+<name>Gazebo/Orange</name>
+</script>
+</material>
+</visual>
+</gazebo>
+<gazebo reference="Link7">
+<visual name="gazebo_color_Link7">
+<material>
+<ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+<diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+<specular>0.1 0.1 0.1 1</specular>
+<emissive>0 0 0 0</emissive>
+</material>
+</visual>
+</gazebo>
+<gazebo reference="left_gripper_Link">
+<visual name="gazebo_color_left_gripper">
+<material>
+<ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+<diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+<specular>0.1 0.1 0.1 1</specular>
+<emissive>0 0 0 0</emissive>
+</material>
+</visual>
+</gazebo>
+<gazebo reference="right_gripper_Link">
+<visual name="gazebo_color_right_gripper">
+<material>
+<ambient>0.792156862745098 0.819607843137255 0.933333333333333 1</ambient>
+<diffuse>0.792156862745098 0.819607843137255 0.933333333333333 1</diffuse>
+<specular>0.1 0.1 0.1 1</specular>
+<emissive>0 0 0 0</emissive>
+</material>
+</visual>
+</gazebo>
+
+
+</xacro:macro>
+
+</robot>

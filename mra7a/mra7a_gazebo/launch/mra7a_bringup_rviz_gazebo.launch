@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Launch Gazebo  -->
+  <include file="$(find mra7a_gazebo)/launch/mra7a_gazebo_world.launch" />   
+
+  <!-- ros_control seven dof arm launch file -->
+  <include file="$(find mra7a_gazebo)/launch/mra7a_gazebo_joint_state_controller.launch" />   
+
+  <!-- ros_control position control dof arm launch file -->
+  <!--<include file="$(find seven_dof_arm_description)/launch/seven_dof_arm_gazebo_position_controller.launch" />  -->
+
+  <!-- ros_control trajectory control dof arm launch file -->
+  <include file="$(find mra7a_gazebo)/launch/mra7a_gazebo_trajectory_controller.launch" />    
+
+
+ # The planning and execution components of MoveIt! configured to 
+ # publish the current configuration of the robot (simulated or real)
+ # and the current state of the world as seen by the planner
+ <include file="$(find mra7a_moveit_config)/launch/move_group.launch">
+  <arg name="publish_monitored_planning_scene" value="true" />
+ </include>
+
+ <!-- The visualization component of MoveIt! -->
+ <include file="$(find mra7a_moveit_config)/launch/moveit_rviz.launch"/>
+
+  <!-- We do not have a robot connected, so publish fake joint states -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="true"/>
+    <rosparam param="/source_list">[/mra7a/joint_states]</rosparam>
+  </node>
+
+
+
+</launch>

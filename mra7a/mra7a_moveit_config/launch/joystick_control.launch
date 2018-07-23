@@ -1,0 +1,9 @@
+<launch>
+  <!-- See moveit_ros/visualization/doc/joystick.rst for documentation -->
+
+
+
+  <!-- Launch python interface -->
+  <node pkg="joy_control" type="joy_control_start.py" output="screen" name="joy_control_python"/>
+        
+</launch>

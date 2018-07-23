@@ -1,0 +1,634 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="mra7a" >
+
+  <!-- gazebo plugin -->
+  <xacro:include filename="$(find mra7a_description)/urdf/mra7a_gazebo_material.xacro" />
+  <!-- transmission -->
+  <xacro:include filename="$(find mra7a_description)/urdf/mra7a_gazebo_transmission.xacro" />
+  <!-- plugin -->
+  <xacro:include filename="$(find mra7a_description)/urdf/gazebo_plugin.xacro" />
+
+  <link name="world"/>
+
+  <!-- base_link -->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="1.58780600757876E-17 1.16524520215829E-17 0.042502057419515"
+        rpy="0 0 0" />
+      <mass
+        value="0.474965549491937" />
+      <inertia
+        ixx="0.00102796097257156"
+        ixy="3.04931861011564E-20"
+        ixz="-2.46655622129667E-19"
+        iyy="0.00102796097257156"
+        iyz="-2.10531007350427E-19"
+        izz="0.00113370981926284" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.6 0.6 0.6 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <!-- Fixed joint -->
+  <joint name="fixed" type="fixed">
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
+  <!-- Link1 -->
+  <link
+    name="Link1">
+    <inertial>
+      <origin
+        xyz="-5.67865757398612E-05 -0.0140433283731522 0.0860916007886425"
+        rpy="0 0 0" />
+      <mass
+        value="0.484821739605689" />
+      <inertia
+        ixx="0.00190386145326369"
+        ixy="-7.3188419055639E-08"
+        ixz="-7.58568324322761E-07"
+        iyy="0.00198491585396"
+        iyz="-0.00012574957933702"
+        izz="0.000907237431346532" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint1 -->
+  <joint
+    name="Joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0999"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="90"
+      velocity="1.31" />
+  </joint>
+
+
+  <!-- Link2 -->
+  <link
+    name="Link2">
+    <inertial>
+      <origin
+        xyz="-6.69829950373753E-06 -0.0688237660038895 0.0293828169205754"
+        rpy="0 0 0" />
+      <mass
+        value="0.451297334389399" />
+      <inertia
+        ixx="0.00221375672762505"
+        ixy="-2.28618652653104E-07"
+        ixz="-5.69361377207988E-08"
+        iyy="0.00086071914429245"
+        iyz="0.000565127774492468"
+        izz="0.00211087682023335" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint2 -->
+  <joint
+    name="Joint2"
+    type="revolute">
+    <origin
+      xyz="0 0 0.1341"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="Link1" />
+    <child
+      link="Link2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.35"
+      upper="2.35"
+      effort="90"
+      velocity="1.31" />
+  </joint>
+
+
+  <!-- Link3 -->
+  <link
+    name="Link3">
+    <inertial>
+      <origin
+        xyz="-1.6761782916957E-05 -0.014503818618556 0.0821858705585297"
+        rpy="0 0 0" />
+      <mass
+        value="0.374717774772796" />
+      <inertia
+        ixx="0.00126530640796233"
+        ixy="-1.62222439577013E-07"
+        ixz="-3.93589373682424E-07"
+        iyy="0.00128269848650926"
+        iyz="-6.66770058678905E-05"
+        izz="0.00052745105806111" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.6 0.6 0.6 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint3 -->
+  <joint
+    name="Joint3"
+    type="revolute">
+    <origin
+      xyz="0 -0.1659 0"
+      rpy="1.5708 0 -1.1102E-16" />
+    <parent
+      link="Link2" />
+    <child
+      link="Link3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="67"
+      velocity="1.31" />
+  </joint>
+
+
+  <!-- Link4 -->
+  <link
+    name="Link4">
+    <inertial>
+      <origin
+        xyz="-1.12602407827841E-05 -0.0676246386478926 0.026015498826292"
+        rpy="0 0 0" />
+      <mass
+        value="0.304329731561178" />
+      <inertia
+        ixx="0.00130027130717768"
+        ixy="-1.42798909943852E-08"
+        ixz="-1.53500377244814E-07"
+        iyy="0.000492188219655464"
+        iyz="0.000333857285617771"
+        izz="0.00124617372894817" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint4 -->
+  <joint
+    name="Joint4"
+    type="revolute">
+    <origin
+      xyz="0 0 0.1261"
+      rpy="-1.5708 1.1102E-16 1.3617E-16" />
+    <parent
+      link="Link3" />
+    <child
+      link="Link4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.35"
+      upper="2.35"
+      effort="67"
+      velocity="1.31" />
+  </joint>
+
+
+  <!-- Link5 -->
+  <link
+    name="Link5">
+    <inertial>
+      <origin
+        xyz="-3.06274495444802E-05 -0.0108974394200068 0.0523693738754832"
+        rpy="0 0 0" />
+      <mass
+        value="0.213409797645465" />
+      <inertia
+        ixx="0.000440858123321773"
+        ixy="1.44479438568004E-07"
+        ixz="9.31649373938296E-08"
+        iyy="0.000436913304189732"
+        iyz="-5.42340102456064E-05"
+        izz="0.000258832985468246" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint5 -->
+  <joint
+    name="Joint5"
+    type="revolute">
+    <origin
+      xyz="0 -0.1511 0"
+      rpy="1.5708 1.3617E-16 8.3267E-16" />
+    <parent
+      link="Link4" />
+    <child
+      link="Link5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="67"
+      velocity="1.57" />
+  </joint>
+
+
+  <!-- Link6 -->
+  <link
+    name="Link6">
+    <inertial>
+      <origin
+        xyz="6.35965394519631E-05 -0.0464874244752261 0.0142268710300685"
+        rpy="0 0 0" />
+      <mass
+        value="0.154125590195249" />
+      <inertia
+        ixx="0.000339720264711383"
+        ixy="-3.43204817014535E-07"
+        ixz="-2.31101462550568E-07"
+        iyy="0.000149787039342989"
+        iyz="7.62748033955854E-05"
+        izz="0.000332976766047" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint6 -->
+  <joint
+    name="Joint6"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0909"
+      rpy="-1.5708 -8.3267E-16 1.3617E-16" />
+    <parent
+      link="Link5" />
+    <child
+      link="Link6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.35"
+      upper="2.35"
+      effort="67"
+      velocity="1.57" />
+  </joint>
+
+
+  <!-- Link7 -->
+  <link
+    name="Link7">
+    <inertial>
+      <origin
+        xyz="3.92549564291853E-05 -1.41203694746798E-07 0.0458459470285104"
+        rpy="0 0 0" />
+      <mass
+        value="0.0893166549830954" />
+      <inertia
+        ixx="0.000137053323762152"
+        ixy="-1.67918184744521E-08"
+        ixz="7.94795260497552E-08"
+        iyy="0.000116218332092996"
+        iyz="1.55881544355394E-09"
+        izz="0.000111067976303793" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/Link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint7 -->
+  <joint
+    name="Joint7"
+    type="revolute">
+    <origin
+      xyz="0 -0.1071 0"
+      rpy="1.5708 1.3617E-16 -1.3861E-32" />
+    <parent
+      link="Link6" />
+    <child
+      link="Link7" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.05"
+      upper="3.05"
+      effort="1.57"
+      velocity="33" />
+  </joint>
+
+
+  <!-- right_gripper_Link -->
+  <link
+    name="right_gripper_Link">
+    <inertial>
+      <origin
+        xyz="-0.0115559850544431 0.0429192295848498 2.31562025767919E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0284916778213195" />
+      <inertia
+        ixx="1.39778331348669E-05"
+        ixy="-2.30051956866705E-06"
+        ixz="-8.66823680494399E-09"
+        iyy="2.88125847185164E-06"
+        iyz="1.94235786524353E-08"
+        izz="1.3466640307517E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/right_gripper_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/right_gripper_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- right_gripper_Joint -->
+  <joint
+    name="right_gripper_Joint"
+    type="revolute">
+    <origin
+      xyz="0 0.025 0.0875"
+      rpy="1.5708 0 -1.5708" />
+    <parent
+      link="Link7" />
+    <child
+      link="right_gripper_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.52"
+      upper="0.52"
+      effort="33"
+      velocity="1.57" />
+  </joint>
+
+
+  <!-- left_gripper_Link -->
+  <link
+    name="left_gripper_Link">
+    <inertial>
+      <origin
+        xyz="0.0115559840579099 0.0429192252418339 -2.3156247749568E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0284916775874153" />
+      <inertia
+        ixx="1.39778395181089E-05"
+        ixy="2.30052096260555E-06"
+        ixz="-8.66793994093481E-09"
+        iyy="2.88125871466953E-06"
+        iyz="-1.94222991506541E-08"
+        izz="1.34666468491224E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/left_gripper_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mra7a_description/meshes/left_gripper_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- left_gripper_Joint -->
+  <joint
+    name="left_gripper_Joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.025 0.0875"
+      rpy="1.5708 0 -1.5708" />
+    <parent
+      link="Link7" />
+    <child
+      link="left_gripper_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.52"
+      upper="0.52"
+      effort="33"
+      velocity="1.57" />
+  </joint>
+
+
+
+  <xacro:mra7a_gazebo_transmission prefix=" " />
+  <xacro:mra7a_gazebo_material prefix=" " />
+
+</robot>

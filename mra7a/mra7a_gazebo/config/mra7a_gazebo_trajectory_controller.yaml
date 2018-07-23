@@ -1,0 +1,57 @@
+mra7a:
+  arm_trajectory_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints: 
+      - Joint1
+      - Joint2
+      - Joint3
+      - Joint4
+      - Joint5
+      - Joint6
+      - Joint7
+
+    constraints:
+      goal_time: 0.5
+      Joint1:
+        goal: 0.1
+      Joint2:
+        goal: 0.1
+      Joint3:
+        goal: 0.1
+      Joint4:
+        goal: 0.1
+      Joint5:
+        goal: 0.1
+      Joint6:
+        goal: 0.1
+      Joint7:
+        goal: 0.1
+
+    gains:
+      Joint1: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      Joint2: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      Joint3: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      Joint4: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      Joint5: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      Joint6: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      Joint7: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+
+
+  gripper_trajectory_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - left_gripper_Joint
+      - right_gripper_Joint
+
+    constraints:
+      goal_time: 0.5
+      left_gripper_Joint:
+        goal: 0.1
+      right_gripper_Joint:
+        goal: 0.1
+    gains:
+      left_gripper_Joint: {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+      right_gripper_Joint: {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+
+
+

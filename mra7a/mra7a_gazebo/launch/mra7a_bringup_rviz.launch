@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- By default, we do not start a database (it can be large) -->
+  <arg name="db" default="true" />
+  <!-- Allow user to specify database location -->
+  <arg name="db_path" default="$(find mra7a_moveit_config)/default_warehouse_mongo_db" />
+ # The planning and execution components of MoveIt! configured to 
+ # publish the current configuration of the robot (simulated or real)
+ # and the current state of the world as seen by the planner
+ <include file="$(find mra7a_moveit_config)/launch/move_group.launch">
+  <arg name="publish_monitored_planning_scene" value="true" />
+ </include>
+
+ <!-- The visualization component of MoveIt! -->
+ <include file="$(find mra7a_moveit_config)/launch/moveit_rviz.launch"/>
+
+  <!-- move_group node have to get the joint states from the "/joint_state" topic, 
+    so, we use the joint_state_publisher node get the joint state from the "/mra7a/joint_states" topic sended by joint-state-controller,
+    then advertise the "/joint_state" topic.-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="true"/>
+    <rosparam param="/source_list">[/mra7a/joint_states]</rosparam>
+  </node>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+    <remap from="/joint_states" to="/mra7a/joint_states" />
+  </node>
+
+  <!-- If database loading was enabled, start mongodb as well -->
+  <include file="$(find mra7a_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)">
+    <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
+  </include>
+</launch>
