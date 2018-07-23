@@ -21,9 +21,9 @@ macro(rostutorial T)
 endmacro()
 
 foreach(dir
-    listener
+    #listener
     notify_connect
-    talker
+   # talker
     babbler
     add_two_ints_client
     add_two_ints_server

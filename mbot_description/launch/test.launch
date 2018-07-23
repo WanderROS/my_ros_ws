@@ -1,0 +1,8 @@
+<launch>
+<node pkg="mbot_description" type="mbot_description_node" name="server" output="screen">
+<remap from="chat" to="talk"/>
+</node>
+<node pkg="mbot_description" type="mbot_description_node2" name="client" output="screen">
+<!-- <remap from="chat" to="talk"/> -->
+</node>
+</launch>

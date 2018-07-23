@@ -1,0 +1,8 @@
+<launch>
+	<node pkg="dynamic_reconfig" type="dynamic_reconfig_node" name="test" output="screen">
+		<param name="int_a" value="10"/>
+	</node>
+
+	<include file="$(find dynamic_reconfig)/launch/tool.launch"/>
+
+</launch>
