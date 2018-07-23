@@ -139,6 +139,8 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(${PROJECT_NAME}_node src/talker.cpp)
 add_executable(${PROJECT_NAME}_node2 src/listener.cpp)
+add_executable(${PROJECT_NAME}_server src/server.cpp)
+add_executable(${PROJECT_NAME}_client src/client.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -149,6 +151,8 @@ add_executable(${PROJECT_NAME}_node2 src/listener.cpp)
 ## same as for the library above
  add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} )
  add_dependencies(${PROJECT_NAME}_node2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} )
+  add_dependencies(${PROJECT_NAME}_server ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
+   add_dependencies(${PROJECT_NAME}_client ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 ## Specify libraries to link a library or executable target against
  target_link_libraries(${PROJECT_NAME}_node
    ${catkin_LIBRARIES}
@@ -156,8 +160,12 @@ add_executable(${PROJECT_NAME}_node2 src/listener.cpp)
 target_link_libraries(${PROJECT_NAME}_node2
    ${catkin_LIBRARIES}
  )
-
-
+target_link_libraries(${PROJECT_NAME}_server
+   ${catkin_LIBRARIES}
+ )
+target_link_libraries(${PROJECT_NAME}_client
+   ${catkin_LIBRARIES}
+ )
 #############
 ## Install ##
 #############

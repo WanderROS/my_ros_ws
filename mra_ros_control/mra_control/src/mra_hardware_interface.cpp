@@ -208,8 +208,11 @@ int main(int argc, char** argv)
     mra_basic_config::get_param(nh);
 
     mra_control::MRAHardwareInterface *mra = new mra_control::MRAHardwareInterface();
+//修改2018-7-23
 
-    ros::spin();
+//    ros::spin();
+    ros::MultiThreadedSpinner s(4);
+    s.spin();
 
     ROS_INFO_STREAM_NAMED("hardware_interface","Shutting down.");
 
